@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <h2>笔记在 es6_learning 目录下</h2>
+    <hr>
+    <!-- <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -16,17 +18,26 @@
       <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
 <script>
+import ChapterOne from "../es6_learning/let_const";
+import RegExpLearning from "../es6_learning/regexp";
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: '汤大叔的Es6学习项目'
     }
+  },
+  created(){
+      //ChapterOne.testLetAndConst();
+      //RegExpLearning.testRegExp();
+      //RegExpLearning.testIncludes();
+      //RegExpLearning.testStartsWith();
+       RegExpLearning.testEndsWith();
   }
 }
 </script>
