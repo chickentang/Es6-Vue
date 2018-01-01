@@ -11,7 +11,7 @@ function exec (cmd) {
 const versionRequirements = [
   {
     name: 'node',
-    currentVersion: semver.clean(process.version),
+    currentVersion:'v8.9.3',// semver.clean(process.version),//写死版本号，加快打包速度
     versionRequirement: packageConfig.engines.node
   }
 ]
@@ -19,7 +19,7 @@ const versionRequirements = [
 if (shell.which('npm')) {
   versionRequirements.push({
     name: 'npm',
-    currentVersion: exec('npm --version'),
+    currentVersion: '5.5.1',//exec('npm --version'),//写死版本号，加快打包速度
     versionRequirement: packageConfig.engines.npm
   })
 }

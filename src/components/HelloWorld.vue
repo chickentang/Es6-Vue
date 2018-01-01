@@ -25,6 +25,7 @@
 <script>
 import ChapterOne from "../es6_learning/let_const";
 import RegExpLearning from "../es6_learning/regexp";
+import Deconstruction from "../es6_learning/deconstruction";
 export default {
   name: 'HelloWorld',
   data () {
@@ -37,7 +38,8 @@ export default {
       //RegExpLearning.testRegExp();
       //RegExpLearning.testIncludes();
       //RegExpLearning.testStartsWith();
-       RegExpLearning.testEndsWith();
+      //  RegExpLearning.testEndsWith();
+       Deconstruction.testDst();
   }
 }
 </script>
