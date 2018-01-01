@@ -3,6 +3,9 @@
     <h1>{{ msg }}</h1>
     <h2>笔记在 es6_learning 目录下</h2>
     <hr>
+    <ul class="es-ul">
+      <li v-for="item in consoleData" v-text="item"></li>
+    </ul>
     <!-- <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -26,11 +29,15 @@
 import ChapterOne from "../es6_learning/let_const";
 import RegExpLearning from "../es6_learning/regexp";
 import Deconstruction from "../es6_learning/deconstruction";
+import Es6Function from '../es6_learning/functions';
+import NewObject from '../es6_learning/new_object';
+import NewArray from '../es6_learning/new_array';
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: '汤大叔的Es6学习项目'
+      msg: '汤大叔的Es6学习项目',
+      consoleData:[],
     }
   },
   created(){
@@ -39,7 +46,14 @@ export default {
       //RegExpLearning.testIncludes();
       //RegExpLearning.testStartsWith();
       //  RegExpLearning.testEndsWith();
-       Deconstruction.testDst();
+      //  Deconstruction.testDst();
+      // RegExpLearning.testRepeat();
+      this.consoleData.push(RegExpLearning.testFlags());
+      this.consoleData.push(Es6Function.testDefaultParams(2));
+      this.consoleData.push(Es6Function.testNewMax());
+      this.consoleData.push(NewObject.testObjectIs());
+      this.consoleData.push(NewArray.testNewArray());
+      
   }
 }
 </script>
@@ -49,15 +63,10 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.es-ul li{
+  width: 100%;
+  text-align: left;
+      padding: 0 10%;
+    list-style: none;
 }
 </style>
