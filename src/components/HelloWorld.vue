@@ -32,6 +32,7 @@ import Deconstruction from "../es6_learning/deconstruction";
 import Es6Function from '../es6_learning/functions';
 import NewObject from '../es6_learning/new_object';
 import NewArray from '../es6_learning/new_array';
+import TestGenerator from '../es6_learning/generator';
 export default {
   name: 'HelloWorld',
   data () {
@@ -53,7 +54,8 @@ export default {
       this.consoleData.push(Es6Function.testNewMax());
       this.consoleData.push(NewObject.testObjectIs());
       this.consoleData.push(NewArray.testNewArray());
-      
+      this.consoleData.push(TestGenerator.main())
+      //TestGenerator.testObjIterator();
   }
 }
 </script>
