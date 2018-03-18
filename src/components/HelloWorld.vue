@@ -33,6 +33,7 @@ import Es6Function from '../es6_learning/functions';
 import NewObject from '../es6_learning/new_object';
 import NewArray from '../es6_learning/new_array';
 import TestGenerator from '../es6_learning/generator';
+import TestNewClass from '../es6_learning/newclass';
 export default {
   name: 'HelloWorld',
   data () {
@@ -42,19 +43,20 @@ export default {
     }
   },
   created(){
-      //ChapterOne.testLetAndConst();
-      //RegExpLearning.testRegExp();
+      RegExpLearning.testRegExp();
       //RegExpLearning.testIncludes();
       //RegExpLearning.testStartsWith();
-      //  RegExpLearning.testEndsWith();
-      //  Deconstruction.testDst();
+      //RegExpLearning.testEndsWith();
+      //Deconstruction.testDst();
       // RegExpLearning.testRepeat();
+      /* this.consoleData.push(ChapterOne.constantize(Object.create({name:'test'})));
       this.consoleData.push(RegExpLearning.testFlags());
       this.consoleData.push(Es6Function.testDefaultParams(2));
       this.consoleData.push(Es6Function.testNewMax());
       this.consoleData.push(NewObject.testObjectIs());
       this.consoleData.push(NewArray.testNewArray());
       this.consoleData.push(TestGenerator.main())
+      this.consoleData.push(TestNewClass.testFoo()); */
       //TestGenerator.testObjIterator();
   }
 }

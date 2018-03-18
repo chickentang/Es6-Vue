@@ -12,11 +12,11 @@ class TestGenerator {
             console.log(`${key}------${value}`)
         }
     }
-    static *inner(){
+    *inner(){
         yield 'hello!';
     }
-    static *outer(){//在一个生成器中调用另一个生成器，用 Yield* 表达式
-        yield* TestGenerator.inner();
+    *outer(){//在一个生成器中调用另一个生成器，用 Yield* 表达式
+        yield* this.inner();
         yield 'tang';
     }
     static *clock(){//状态机

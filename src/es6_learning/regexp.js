@@ -5,9 +5,14 @@ class RegExpLearning extends base {
      super();
      this.consoles = consoles;
   }
-
+  /**
+   * 完全支持UTF-16，接受编码单元的位置而非字符位置作为参数，返回与字符串中给定位置对应的码位，即一个整数值：
+   */
   testRegExp() {
-    var text = "𠮷";
+    var text = "𠮷a";
+
+    console.log(text.charCodeAt(0)); //55362
+    console.log(text.codePointAt(0)); //134017
 
     console.log(text.length); // 2
     console.log(/^.$/.test(text)); // false
