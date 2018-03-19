@@ -1,4 +1,5 @@
 import base from './base_class';
+const normalize = Symbol('normalize');
 class RegExpLearning extends base {
 
   constructor(consoles){
@@ -14,34 +15,49 @@ class RegExpLearning extends base {
     console.log(text.charCodeAt(0)); //55362
     console.log(text.codePointAt(0)); //134017
 
-    console.log(text.length); // 2
-    console.log(/^.$/.test(text)); // false
-    console.log(/^.$/u.test(text)); // false
+    console.log(String.fromCodePoint(134071)); // "𠮷"
+
+    console.log(this[normalize]('\u01D1') === this[normalize]('\u004F\u030C')) // true
+
+    // console.log(text.length); // 2
+    // console.log(/^.$/.test(text)); // false
+    // console.log(/^.$/u.test(text)); // false
     // console.log(text.charAt(0));        // ""
     // console.log(text.charAt(1));        // ""
     // console.log(text.charCodeAt(0));    // 55362
     // console.log(text.charCodeAt(1));    // 57271
   }
 
+  [normalize](text) {//私有方法
+      return text.normalize();
+  }
+
+  normalize(values) {//把字符串标准化为同一种形式
+    return values.map((text) => {
+      return text.normalize();
+    })
+  }
+
+
   testIncludes() {
     let tempArray = [1, "4", "uu", 5];
     let tempStr = "test123uuunit582";
-    console.log(tempArray.includes("5"));
+    console.log(tempArray.includes(5)); //true
     console.log(tempStr.includes("test123", 1)); //从第二个位置进行匹配
   }
 
   testStartsWith() {
     //let tempArray = [1,"4","uu",5];
     let tempStr = "test123uuunit582";
-    console.log(tempStr.startsWith("5"));
-    console.log(tempStr.startsWith("test123", 0)); //从第二个位置进行匹配
+    console.log(tempStr.startsWith("test")); //true
+    console.log(tempStr.startsWith("test123", 0)); //从第一个位置进行匹配
   }
 
   testEndsWith() {//16 - 6 = 10 ，从右数第10位开始匹配，由左向右进行匹配
     //let tempArray = [1,"4","uu",5];
     let tempStr = "test123uuunit582";
     //console.log(tempStr.endsWith("5"));
-    console.log(tempStr.endsWith("12",6) + " is test endswith " +`字符串的长度是：${tempStr.length}`); //从第二个位置进行匹配
+    console.log(tempStr.endsWith("12",6) + " is test endswith " +`字符串的长度是：${tempStr.length}`); //从第六个位置进行匹配
   }
 
   testRepeat(){

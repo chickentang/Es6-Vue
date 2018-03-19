@@ -43,10 +43,10 @@ export default {
     }
   },
   created(){
-      RegExpLearning.testRegExp();
-      //RegExpLearning.testIncludes();
+      // RegExpLearning.testRegExp();
+      RegExpLearning.testIncludes();
       //RegExpLearning.testStartsWith();
-      //RegExpLearning.testEndsWith();
+      RegExpLearning.testEndsWith();
       //Deconstruction.testDst();
       // RegExpLearning.testRepeat();
       /* this.consoleData.push(ChapterOne.constantize(Object.create({name:'test'})));
