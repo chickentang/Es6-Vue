@@ -38,6 +38,26 @@ class RegExpLearning extends base {
     })
   }
 
+  testTemplateStr(){
+    /* let str = `
+      <ul>
+          <li>first</li>
+          <li>second</li>
+      </ul>
+    `.trim(); */
+    //写法一
+    let str = 'return ' + '`ni hao ${name}`';
+    let func = new Function('name',str);
+    let data = func('uct');
+    //写法二
+    let str2 = '(name) => `ni hao ${name}`';
+    let func2 = eval.call(null,str2);
+    let data2 = func2('uct');
+
+    console.log(data + '  ' + data2);
+
+  }
+
 
   testIncludes() {
     let tempArray = [1, "4", "uu", 5];

@@ -47,6 +47,7 @@ export default {
       RegExpLearning.testIncludes();
       //RegExpLearning.testStartsWith();
       RegExpLearning.testEndsWith();
+      RegExpLearning.testTemplateStr();
       //Deconstruction.testDst();
       // RegExpLearning.testRepeat();
       /* this.consoleData.push(ChapterOne.constantize(Object.create({name:'test'})));
