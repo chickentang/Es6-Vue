@@ -1,3 +1,4 @@
+let x = 10;
 class Es6Function{
     //default params
     testDefaultParams(one , two = one){
@@ -8,6 +9,10 @@ class Es6Function{
         return `用展开运算符来取最大值：${Math.max(...arr)}`;
     }
 
+    testLazy(p = x + 1){
+        console.log(p);
+    }
+    
 }
  
 export default new Es6Function();
