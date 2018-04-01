@@ -1,5 +1,8 @@
 let x = 10;
 class Es6Function{
+    constructor() {
+        this.value = 5;
+    }
     //default params
     testDefaultParams(one , two = one){
         return `${one} 第二个参数是： ${two}`;
@@ -13,6 +16,26 @@ class Es6Function{
         console.log(p);
     }
     
+    thisScope(){
+        setTimeout(()=>{
+            console.log('id: ',this.id);
+        },100);
+    }
+
+    testArguments(){
+        setTimeout(() => {
+            console.log('args: ',arguments)
+        }, 100);
+    }
+
+    getValue(){
+        return this.value ++;
+    }
+
+    add(first,second = this.getValue()){
+        console.log('plus: ', first + second );
+    }
+
 }
  
 export default new Es6Function();
