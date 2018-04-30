@@ -41,6 +41,9 @@ import TestNewClass2 from '../es6_learning/newclass/new_class2';
 import GetSet from '../es6_learning/newclass/get_set';
 import TestStaticClass from '../es6_learning/newclass/static_fun';
 import MyClass from '../es6_learning/newclass/generator';
+import TestExtendsClass from '../es6_learning/newclass/class_extends';
+import Square from '../es6_learning/newclass/class_mix';
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -99,7 +102,21 @@ export default {
       // TestSymbol.testInnerSymbol();
       // console.log(typeof TestNewClass);
 
-      this.consoleData.push(TestStaticClass.testFoo());
+      const instance = new TestExtendsClass(2);
+
+      let x = new Square(3);
+
+
+      this.consoleData = [
+        TestStaticClass.testFoo(),
+        TestStaticClass.myStaticProp,
+        TestStaticClass.myProp,
+        instance.getArea(),
+        instance instanceof TestExtendsClass,
+        TestExtendsClass.getPerimeter(2,3),
+        x.getArea(),
+        x.serialize(),
+      ]
 
   }
 }
