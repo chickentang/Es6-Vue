@@ -11,4 +11,7 @@ class TestNewClass{
     }
 }
 
+console.log(typeof TestNewClass); // function
+console.log(TestNewClass === TestNewClass.prototype.constructor); // true
+
 export default new TestNewClass();

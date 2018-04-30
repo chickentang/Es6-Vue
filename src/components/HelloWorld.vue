@@ -33,14 +33,19 @@ import Es6Function from '../es6_learning/functions';
 import NewObject from '../es6_learning/new_object';
 import NewArray from '../es6_learning/new_array';
 import TestGenerator from '../es6_learning/generator';
-import TestNewClass from '../es6_learning/newclass';
+import TestNewClass from '../es6_learning/newclass/newclass';
 import TestSetMap from '../es6_learning/set_map';
 import Countdown from '../es6_learning/weakmap';
+import TestSymbol from '../es6_learning/symbol';
+import TestNewClass2 from '../es6_learning/newclass/new_class2';
+import GetSet from '../es6_learning/newclass/get_set';
+import TestStaticClass from '../es6_learning/newclass/static_fun';
+import MyClass from '../es6_learning/newclass/generator';
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: '汤大叔的Es6学习项目',
+      msg: 'CKTang的Es6学习项目',
       consoleData:[],
     }
   },
@@ -87,9 +92,15 @@ export default {
       // strMap.set('a',123);
       // this.consoleData.push(TestSetMap.strMapToObj(strMap));
       // this.consoleData.push(TestSetMap.objToStrMap({'b':432}));
-      const c = new Countdown(2,()=>console.log('DONE'));
-      c.dec();
-      c.dec();
+      // const c = new Countdown(2,()=>console.log('DONE'));
+      // c.dec();
+      // c.dec();
+      // TestSymbol.testSymbolFor();
+      // TestSymbol.testInnerSymbol();
+      // console.log(typeof TestNewClass);
+
+      this.consoleData.push(TestStaticClass.testFoo());
+
   }
 }
 </script>
