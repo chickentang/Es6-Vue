@@ -11,8 +11,6 @@
 	8. Javascript中的类
 	9. Promise、Generator函数、Async函数
 	10. 代理（Proxy）和反射（Reflection）API
-	11. 修饰器
-	12. Module
 
 > cktang's ECMAScript 6 learning note
 
