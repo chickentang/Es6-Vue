@@ -44,6 +44,12 @@ import MyClass from '../es6_learning/newclass/generator';
 import TestExtendsClass from '../es6_learning/newclass/class_extends';
 import Square from '../es6_learning/newclass/class_mix';
 
+import tp from '../es6_learning/proxy';
+
+import tr from '../es6_learning/reflect';
+
+import to from '../es6_learning/observer';
+
 export default {
   name: 'HelloWorld',
   data () {

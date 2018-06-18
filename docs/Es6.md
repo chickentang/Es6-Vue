@@ -1,21 +1,14 @@
 ## 《ES标准入门》&《UNDERSTANDING ECMACHRIPT 6》 读书摘录笔记（下） ##
 
 ### 前言
-**
+*这两本书应该是目前ES6相关的比较好的了，网上有电子版本（文末有链接）。不过我买了书看，哈哈。这两篇摘录笔记分为上下两部分，本文是下半部分（7-10章），摘录了两本书里一些比较有用的知识点。*
 
 ### 目录
 
-> 7 . Symbol和Symbol属性
-> 
-> 8 . Javascript中的类
-> 
-> 9 . Promise、Generator函数、Async函数
-> 
-> 10 . 代理（Proxy）和反射（Reflection）API
-> 
-> 11 . 修饰器
-> 
-> 12 . Module
+> 7 . Symbol和Symbol属性  
+> 8 . Javascript中的类  
+> 9 . Promise、Generator函数、Async函数  
+> 10 . 代理（Proxy）和反射（Reflection）API  
 
 
 
@@ -410,6 +403,108 @@ Promise.race接受含多个受监视Promise的可迭代对象作为唯一参数�
 
 
 
+### 十、代理（Proxy）和反射（Reflect）API
+Proxy用于修改某些操作的默认行为，等同于在语言层面 做出修改，所以属于一种“无编程”（Meta Programming），即对编程语言进行编程。
+Refect主要是将Object对象的一些明显属于语言内部的方法放到Refect对象上，修改某些Object对象返回的结果，让其变得更合理,让Object操作都变成函数行为，Reflect对象的方法与Proxy一一对应。
+
+
+值得摘录的有以下几点：
+
+##### 1. 代理（Proxy）
+
+ES6原生提供的Proxy构造函数，用于生成Porxy实例：
+
+	var proxy = new Proxy(target,handler);	
+
+代理Get方法：
+
+	class TestProxy{
+	    constructor(){
+	        this.proxy = new Proxy({},{
+	            get: (target,property) => {
+	                return 2;
+	            }
+	        })
+	    }
+	}
+	
+	let tp = new TestProxy();
+	
+	console.log(tp.proxy.time + " this is time");// this is time
+	console.log(tp.proxy.name + " this is time name");// this is time name
+	console.log(tp.proxy.anything + " this is time anything");// this is time anything
+
+> 要使Proxy起作用必须针对Proxy实例进行操作，而不是针对目标对象。  
+> Proxy支持拦截操作的对象方法有：get,set,has,deleteProperty,ownKeys,getOwnPropertyDescriptor,defineProperty,preventExtensions,getPrototypeOf,isExtensible,setPrototypeOf,apply,construct.
+
+##### 2. 反射（Reflect）
+无论Proxy怎么修改默认行为，我们总可以在Reflect上获取默认行为：
+
+	class TestReflect{
+	    constructor(){
+	        let obj = Object.create(null);
+	
+	        obj.name = "test name";
+	
+	        obj.anything = "anything";
+	
+	        this.loggedObj = new Proxy(obj,{
+	            get: (target,name) =>{
+	                console.log('get',target,name);
+	                return Reflect.get(target,name);//获取默认行为
+	            },
+	            deleteProperty(target,name){
+	                console.log('delete' + name);
+	                return Reflect.deleteProperty(target,name);//获取默认行为
+	            },
+	            has(target,name){
+	                console.log('has' + name);
+	                return Reflect.has(target,name);//获取默认行为
+	            }
+	        })
+	    }
+	}
+	
+	let tr = new TestReflect();
+	
+	
+	
+	console.log( `reflect name : ` + tr.loggedObj.name); //reflect name : test name
+
+##### 3. 使用Proxy实现观察者模式
+
+	class TestObserve{//Proxy和Reflect实现观察者模式
+	    constructor(){
+	        this.queuedObservers = new Set();
+	        
+	        this.set = (target,key,value,receiver) => {
+	            const result = Reflect.set(target,key,value,receiver);
+	            this.queuedObservers.forEach(observer => observer());
+	            return result;
+	        }
+	
+	    }
+	    observe = fn => this.queuedObservers.add(fn);
+	    observable = obj => new Proxy(obj,{set:this.set});
+	    print(){
+	        console.log(`${person.name} , ${person.age}`);
+	    }
+	}
+	
+	let to = new TestObserve();
+	
+	const person = to.observable({name:'张三',age:20});
+	
+	to.observe(to.print);
+	
+	person.name = "pp";
+	
+	//pp , 20
+
+### 结语
+*拖拖拉拉，终于写完了，代码也同步完成，收获不小。*
+
+### 参考链接
 
 [ECMAScript 6 入门](http://es6.ruanyifeng.com/)
 
